@@ -3,6 +3,10 @@ import LibraryIcon from '../icons/Library.astro'
 import HomeIcon from '../icons/Home.astro'
 import SearchIcon from '../icons/Search.astro'
 import SideMenuItems from './SideMenuItems.astro'
+import SideMenuCard from './SideMenuCard.astro'
+
+
+import { playlists } from '../lib/data.ts'
 ---
 <nav class="flex flex-col flex-1 gap-2">
     <div class="bg-zinc-900 rounded-lg p-2">
@@ -23,6 +27,10 @@ import SideMenuItems from './SideMenuItems.astro'
                 <LibraryIcon />
                 Tu Biblioteca
             </SideMenuItems>
+
+            {
+                playlists.map(playlist => <SideMenuCard playlist={playlist} />)
+            }
         </ul>
     </div>
 </nav>
