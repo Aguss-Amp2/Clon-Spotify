@@ -5,8 +5,8 @@ import PlaylistItemCard from "../../components/PlaylistItemCard.astro";
 
 const { id } = Astro.params;
 
-const playlist = allPlaylists.find((playlist) => playlist.id == id);
-const playListSongs = songs.filter((song) => song.albumId == playlist?.albumId);
+const playlist = allPlaylists.find((playlist) => playlist.id === id);
+const playListSongs = songs.filter((song) => song.albumId === playlist?.albumId);
 ---
 
 <Layout title="Spotify Clone">
@@ -42,8 +42,8 @@ const playListSongs = songs.filter((song) => song.albumId == playlist?.albumId);
                         </div>
                         <p class="mt-1">
                             <span class="text-white"
-                                >{playListSongs.length} canciones</span
-                            >, 3 h aproximadamente
+                                >{playListSongs.length} canciones</span>, 
+                                3 h aproximadamente
                         </p>
                     </div>
                 </div>
