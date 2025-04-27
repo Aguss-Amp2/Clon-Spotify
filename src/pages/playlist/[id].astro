@@ -16,12 +16,12 @@ const playListSongs = songs.filter((song) => song.albumId === playlist?.albumId)
         transition:name=`playlist ${id} box`
     >
         <!-- <PageHeader/> -->
-        <header class="flex flex-col gap-8 px-6">
+        <header class="flex flex-row gap-8 px-6 mt-12">            
             <picture class="aspect-square w-52 h-52 flex-none">
                 <img
                     src={playlist?.cover}
                     alt={`Cover of ${playlist?.title}`}
-                    class="object-cover w-full h-full rounded-md"
+                    class="object-cover w-full h-full shadow-lg"
                     transition:name=`playlist ${playlist?.id} image`
                 />
             </picture>
@@ -52,7 +52,7 @@ const playListSongs = songs.filter((song) => song.albumId === playlist?.albumId)
 
         <div class="relative z-10 px-6 pt-10"></div>
         <div
-            class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80"
+            class="absolute inset-0 bg-gradient-to-t from-zinc-900 via-zinc-900/80 -z-10"
         >
         </div>
     </div>
