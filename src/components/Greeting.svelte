@@ -6,7 +6,7 @@
 
     if (currentHour < 12){
         greeting = "Buenos Dias"
-    }else if (currentHour > 18){
+    }else if (currentHour < 18){
         greeting = "Buenos Tardes"
     }else {
         greeting = "Buenos Noches"
