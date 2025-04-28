@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
-import { usePlayerStore } from "../store/playerStore";
-import { Slider } from "@radix-ui/react-slider";
+import { usePlayerStore } from "../store/playerStore.js";
+import { Slider } from "../components/Slider.js";
 
 export const Pause = () => {
     return (
@@ -39,6 +39,7 @@ const CurrentSong = ({ image, title, artists }) => {
 export function Player () {
     const { currentMusic, isPlaying, setIsPlaying } = usePlayerStore(state => state)
     const audioRef = useRef()
+    const volumeRef = useRef(1)
 
     useEffect(() => {
         isPlaying ? audioRef.current.play() : audioRef.current.pause()
@@ -46,9 +47,10 @@ export function Player () {
 
     useEffect(() => {
         const { song, songs, playlist } = currentMusic
-        if(song){
+        if (song) {
             const src = `/music/${playlist?.id}/0${song.id}.mp3`
             audioRef.current.src = src
+            audioRef.current.volume = volumeRef.current
             audioRef.current.play()
         }
     }, [currentMusic])
@@ -73,10 +75,12 @@ export function Player () {
             </div>
 
             <div className="grid place-content-center">
-                <Slider defaultValue={100} max={100} min={0} className="w-[95px]" 
+                <Slider defaultValue={[100]} max={100} min={0} className="w-[95px]" 
                 onValueChange={(value) => {
-                    const [newVolume] = value 
-                    audioRef.current.volume = newVolume / 100
+                    const [newVolume] = value
+                    const volumeValue = newVolume / 100
+                    volumeRef.current = volumeValue
+                    audioRef.current.volume = volumeValue
                 }}/>
             </div>
         </div>
